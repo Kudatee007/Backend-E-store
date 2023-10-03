@@ -17,6 +17,8 @@ const cloudinaryUploadImg = async (fileToUploads) => {
         resolve(
           {
             url: result.secure_url,
+            asset_id: result.asset_id,
+            public_id: result.public_id,
           },
           {
             resource_type: "auto",
@@ -27,4 +29,27 @@ const cloudinaryUploadImg = async (fileToUploads) => {
   });
 };
 
-module.exports = cloudinaryUploadImg;
+// remove images
+const cloudinaryDeleteImg = async (fileToDelete) => {
+  return new Promise((resolve) => {
+    cloudinary.uploader.destrop(fileToDelete, (error, result) => {
+      if (error) {
+        // Handle error here
+        console.error("Error uploading to Cloudinary:", error);
+        resolve(null);
+      } else {
+        resolve(
+          {
+            url: result.secure_url,
+            asset_id: result.asset_id,
+            public_id: result.public_id,
+          },
+          {
+            resource_type: "auto",
+          }
+        );
+      }
+    });
+  });
+};
+module.exports = {cloudinaryUploadImg, cloudinaryDeleteImg};
