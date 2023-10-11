@@ -49,12 +49,21 @@ const getBrand = asyncHandler(async (req, res) => {
 
 const getAllBrand = asyncHandler(async (req, res) => {
   try {
-    const getallBrand = await Brand.find();
-    res.json(getallBrand);
+    const brand = await Brand.find();
+    res.json(brand);
   } catch (error) {
     throw new Error(error);
   }
 });
+// const getAllBrand = asyncHandler(async (req, res) => {
+//   try {
+//     const brand = await Brand.find();
+//     res.json(brand);
+//   } catch (error) {
+//     console.error("Error in getAllBrand:", error);
+//     res.status(500).json({ error: "Internal Server Error" });
+//   }
+// });
 
 module.exports = {
   createBrand,

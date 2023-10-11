@@ -32,7 +32,7 @@ const cloudinaryUploadImg = async (fileToUploads) => {
 // remove images
 const cloudinaryDeleteImg = async (fileToDelete) => {
   return new Promise((resolve) => {
-    cloudinary.uploader.destrop(fileToDelete, (error, result) => {
+    cloudinary.uploader.destroy(fileToDelete, (error, result) => {
       if (error) {
         // Handle error here
         console.error("Error uploading to Cloudinary:", error);

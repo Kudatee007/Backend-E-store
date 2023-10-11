@@ -13,6 +13,6 @@ router.post("/", authMiidleware, isAdmin, createColor);
 router.put("/:id", authMiidleware, isAdmin, updateColor);
 router.delete("/:id", authMiidleware, isAdmin, deleteColor);
 router.get("/:id", authMiidleware, getColor);
-router.get("/", authMiidleware, getAllColor);
+router.get("/", getAllColor);
 
 module.exports = router;
