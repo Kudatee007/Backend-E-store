@@ -50,8 +50,9 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
 const getAproduct = asyncHandler(async (req, res) => {
   const { id } = req.params;
+  validateMongodbId(id);
   try {
-    const findProduct = await Product.findById(id);
+    const findProduct = await Product.findById(id).populate("color");
     res.json(findProduct);
   } catch (error) {
     throw new Error(error);
@@ -103,13 +104,47 @@ const getAllProduct = asyncHandler(async (req, res) => {
   }
 });
 
+// const addToWishlist = asyncHandler(async (req, res) => {
+//   const { _id } = req.user;
+//   const { prodId } = req.body;
+//   try {
+//     const user = await User.findById(_id);
+//     const alreadyAdded = user.wishlist.find((id) => id.toString() === prodId);
+//     if (alreadyAdded) {
+//       let user = await User.findByIdAndUpdate(
+//         _id,
+//         {
+//           $pull: { wishlist: prodId },
+//         },
+//         {
+//           new: true,
+//         }
+//       );
+//       res.json(user);
+//     } else {
+//       let user = await User.findByIdAndUpdate(
+//         _id,
+//         {
+//           $push: { wishlist: prodId },
+//         },
+//         {
+//           new: true,
+//         }
+//       );
+//       res.json(user);
+//     }
+//   } catch (error) {
+//     throw new Error(error);
+//   }
+// });
+
 const addToWishlist = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   const { prodId } = req.body;
   try {
     const user = await User.findById(_id);
-    const alreadyAdded = user.wishlist.find((id) => id.toString() === prodId);
-    if (alreadyAdded) {
+    const alreadyadded = user.wishlist.find((id) => id.toString() === prodId);
+    if (alreadyadded) {
       let user = await User.findByIdAndUpdate(
         _id,
         {
@@ -139,7 +174,7 @@ const addToWishlist = asyncHandler(async (req, res) => {
 
 const rating = asyncHandler(async (req, res) => {
   const { _id } = req.params;
-  const { star, prodId, comment } = req.body;
+  const { star, prodId } = req.body;
 
   try {
     // Update or add rating for the specific user
@@ -168,7 +203,6 @@ const rating = asyncHandler(async (req, res) => {
           $push: {
             ratings: {
               star: star,
-              comment: comment,
               postedby: _id,
             },
           },

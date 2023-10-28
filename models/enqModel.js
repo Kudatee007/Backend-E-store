@@ -18,11 +18,11 @@ var enqSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    status:{
-        type:String,
-        default:"Submitted",
-        enum: ["submitted", "Contacted", "In Progress"]
-    }
+    status: {
+        type: String,
+        default: "Submitted",
+        enum: ["Submitted", "Contacted", "In Progress", "Resolved"],
+      },
 });
 
 //Export the model

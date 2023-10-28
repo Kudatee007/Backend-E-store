@@ -11,7 +11,6 @@ var productSchema = new mongoose.Schema(
     slug: {
       type: String,
       required: true,
-      unique: true,
       lowercase: true,
     },
     description: {
@@ -44,7 +43,7 @@ var productSchema = new mongoose.Schema(
         url: String,
       },
     ],
-    color: [],
+    color: [{type: mongoose.Schema.Types.ObjectId, ref: "Color"}],
     tags: [],
     ratings: [
       {
