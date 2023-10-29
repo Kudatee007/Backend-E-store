@@ -53,20 +53,24 @@ var orderSchema = new mongoose.Schema(
         product: {
           type: mongoose.Schema.Types.ObjectId,
           ref: "Product",
-          // required: true,
+          required: true,
         },
         color: {
           type: mongoose.Schema.Types.ObjectId,
           ref: "Color",
-          // required: true,
+          required: true,
         },
         quantity: {
           type: Number,
-          // required: true,
+          required: true,
         },
         price: {
           type: Number,
-          // required: true,
+          required: true,
+        },
+        size: {
+          type: String,
+          enum: ['small', 'medium', 'large', 'xlarge', 'xxlarge'],
         },
       },
     ],

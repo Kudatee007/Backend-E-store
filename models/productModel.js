@@ -37,6 +37,10 @@ var productSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    size: {
+      type: String,
+      enum: ['small', 'medium', 'large', 'xlarge', 'xxlarge'],
+    },
     images: [
       {
         public_id: String,
