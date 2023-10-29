@@ -2,7 +2,7 @@
   "name": "backend_for_e-store",
   "version": "1.0.0",
   "description": "e-commerce-website",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
