@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/Kudatee007/Backend-E-store.git"
   },
+  "engines": {
+    "node": ">=14.20.1"
+  },
   "author": "OluwaTimilehin",
   "license": "ISC",
   "bugs": {
