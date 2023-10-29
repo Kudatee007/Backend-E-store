@@ -82,7 +82,7 @@ router.delete(
   authMiidleware,
   updateProductQuantityFromCart
 );
-// router.delete("/empty-cart", authMiidleware, emptyCart);
+router.delete("/empty-cart", authMiidleware, emptyCart);
 router.delete("/:id", deleteUser);
 router.put("/edit-user", authMiidleware, updatedUser);
 router.put("/save-address", authMiidleware, saveAddress);
