@@ -323,7 +323,7 @@ const getWishlist = asyncHandler(async (req, res) => {
 });
 
 const userCart = asyncHandler(async (req, res) => {
-  const { productId, color, quantity, price, size } = req.body;
+  const { productId, color, quantity, price } = req.body;
   const { _id } = req.user;
   validateMongodbId(_id);
   try {
@@ -333,7 +333,7 @@ const userCart = asyncHandler(async (req, res) => {
       color,
       price,
       quantity,
-      size
+      // size
     }).save();
     res.json(newCart);
   } catch (error) {

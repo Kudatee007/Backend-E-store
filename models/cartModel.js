@@ -19,10 +19,10 @@ var cartSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    size: {
-      type: String,
-      enum: ['small', 'medium', 'large', 'xlarge', 'xxlarge'],
-    },
+    // size: {
+    //   type: String,
+    //   enum: ['small', 'medium', 'large', 'xlarge', 'xxlarge'],
+    // },
     color: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Color",
